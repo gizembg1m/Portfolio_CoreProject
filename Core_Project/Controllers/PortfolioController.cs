@@ -24,7 +24,9 @@ namespace Core_Project.Controllers
         [HttpGet]
         public IActionResult AddPortfolio()
         {
-
+            ViewBag.v1 = "Add Project";
+            ViewBag.v2 = "Projects";
+            ViewBag.v3 = "Add Project";
             return View();
         }
 
@@ -44,6 +46,47 @@ namespace Core_Project.Controllers
                 foreach (var item in results.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
+
+
+        public IActionResult DeletePortfolio(int id)
+        {
+            var values = portfolioManager.TGetByID(id);
+            portfolioManager.TDelete(values);
+            return RedirectToAction(("Index"));
+        }
+
+
+        [HttpGet]
+        public IActionResult EditPortfolio(int id)
+        { 
+            ViewBag.v1 = "Project List";
+            ViewBag.v2 = "Projects";
+            ViewBag.v3 = "Edit Project";
+            var values = portfolioManager.TGetByID(id);
+            return View(values);
+        }
+
+
+
+        [HttpPost]
+        public IActionResult EditPortfolio(Portfolio portfolio)
+        {
+            PortfolioValidator validations = new PortfolioValidator();
+            ValidationResult results = validations.Validate(portfolio);
+            if (results.IsValid)
+            {
+                portfolioManager.TUpdate(portfolio);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorCode);
                 }
             }
             return View();

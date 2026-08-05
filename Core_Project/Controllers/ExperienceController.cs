@@ -24,6 +24,9 @@ namespace Core_Project.Controllers
         [HttpGet]
         public IActionResult AddExperience()
         {
+            ViewBag.v1 = "Add Experience";
+            ViewBag.v2 = "Experiences";
+            ViewBag.v3 = "Add Experience";
             return View();
         }
 

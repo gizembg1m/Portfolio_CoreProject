@@ -48,7 +48,7 @@ namespace Core_Project.Controllers
         {
             ViewBag.v1 = "Edit";
             ViewBag.v2 = "Skills";
-            ViewBag.v3 = "Update Skill";
+            ViewBag.v3 = "Edit Skill";
             var values = skillManager.TGetByID(id);
             return View(values);
         }

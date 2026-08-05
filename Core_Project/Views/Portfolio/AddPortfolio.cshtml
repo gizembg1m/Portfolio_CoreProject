@@ -11,38 +11,44 @@
         <div class="card">
             <div class="card-body">
                 <p class="card-description"> Add New Project Panel </p>
-                <form class="forms-sample">
-                    <br />
-                    @Html.Label("Project Title")
-                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.Name)
-                    <br />
-                    <label>Image 1</label>
-                    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.ImageUrl)
-                    <br />
-                    <label>Image 2</label>
-                    @Html.TextBoxFor(x => x.ImageUrl2, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.ImageUrl2)
-                    <br />
-                    <label>Project URL</label>
-                    @Html.TextBoxFor(x => x.ProjectUrl, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.ProjectUrl)
-                    <br />
-                    <label>Price</label>
-                    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.Price)
-                    <br />
-                    <label>Completion</label>
-                    @Html.TextBoxFor(x => x.Value, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.Value)
-                    <br />
-                    <label>Platform</label>
-                    @Html.TextBoxFor(x => x.Platform, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.Platform)
-                    <br />
-                    <button class="btn btn-info">Save</button>
-                </form>
+
+                <br />
+                @Html.Label("Project Title")
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger font-weight-bold small mt-1 d-block" })
+                <br />
+
+                <label>Image 1</label>
+                @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ImageUrl, "", new { @class = "text-danger font-weight-bold small mt-1 d-block" })
+                <br />
+
+                <label>Image 2</label>
+                @Html.TextBoxFor(x => x.ImageUrl2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ImageUrl2, "", new { @class = "text-danger font-weight-bold small mt-1 d-block" })
+                <br />
+
+                <label>Project URL</label>
+                @Html.TextBoxFor(x => x.ProjectUrl, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ProjectUrl, "", new { @class = "text-danger font-weight-bold small mt-1 d-block" })
+                <br />
+
+                <label>Price</label>
+                @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Price, "", new { @class = "text-danger font-weight-bold small mt-1 d-block" })
+                <br />
+
+                <label>Completion</label>
+                @Html.TextBoxFor(x => x.Value, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Value, "", new { @class = "text-danger font-weight-bold small mt-1 d-block" })
+                <br />
+
+                <label>Platform</label>
+                @Html.TextBoxFor(x => x.Platform, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Platform, "", new { @class = "text-danger font-weight-bold small mt-1 d-block" })
+                <br />
+
+                <button class="btn btn-info">Save</button>
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@ namespace EntityLayer.Concrete
         public string? ImageUrl4 { get; set; }
         public string Platform { get; set; }
         public string Price { get; set; }
-        public int Value { get; set; }
+        public int Value { get; set; }  //Value= Completion percentage of the project
         public bool Status { get; set; }
 
 
