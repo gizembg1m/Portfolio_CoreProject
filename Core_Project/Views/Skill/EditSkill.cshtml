@@ -1,18 +1,15 @@
 ﻿@model EntityLayer.Concrete.Skill
 
-
 @{
     ViewData["Title"] = "EditSkill";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
-
-
 @using (Html.BeginForm("EditSkill", "Skill", FormMethod.Post))
 {
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <p class="card-description"> Skill Updating Panel </p>
+                <p class="card-description"> Skill Edit Panel </p>
                 <form class="forms-sample">
                     <div class="form-group">
                         @*<label>ID</label>*@

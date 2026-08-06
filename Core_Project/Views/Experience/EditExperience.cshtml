@@ -1,9 +1,7 @@
 ﻿@model EntityLayer.Concrete.Experience
-
-
 @{
     ViewData["Title"] = "EditExperience";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
 @using (Html.BeginForm("EditExperience", "Experience", FormMethod.Post))
@@ -11,7 +9,7 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <p class="card-description"> Experience Updating Panel </p>
+                <p class="card-description"> Experience Editing Panel </p>
                 <form class="forms-sample">
                     <div class="form-group">
                         <label>ID</label>

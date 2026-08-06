@@ -2,8 +2,12 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
+
+<div class="card-header border-0 py-3" style="background-color: #2a3038;">
+    <h3 class="mb-0 fw-bold text-white fs-4">Edit Featured Post Page</h3>
+</div>
 
 @using (Html.BeginForm("Index", "Feature", FormMethod.Post))
 {
