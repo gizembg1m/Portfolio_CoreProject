@@ -1,13 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Entity_Framework;
 
-namespace Core_Project.ViewComponents.Dashboard
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Core_Proje.ViewComponents.Dashboard
 {
     public class MessageList : ViewComponent
     {
+        UserMessageManager messageManager = new UserMessageManager(new EfUserMessageDal());
         public IViewComponentResult Invoke()
         {
-            return View();
+            var values = messageManager.GetUserMessagesWithUserService();
+            return View(values);
         }
-    
     }
 }
