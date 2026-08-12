@@ -1,6 +1,11 @@
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<Context>();
 // Add services to the container.
+builder.Services.AddIdentity<WriterUser, WriterRole>().AddEntityFrameworkStores<Context>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -14,8 +19,8 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapStaticAssets();
@@ -28,6 +33,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();

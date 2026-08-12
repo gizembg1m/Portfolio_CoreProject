@@ -21,10 +21,36 @@ namespace Core_Project.Areas.Writer.Controllers
             return View();
         }
 
+
         [HttpPost]
-        public IActionResult Index(UserRegisterViewModel p)
+        public async Task<IActionResult> Index(UserRegisterViewModel p) 
         {
-            return View();
+            
+            WriterUser writeUser = new WriterUser()
+            {
+                Name = p.Name!,
+                Surname = p.Surname!,
+                Email = p.Mail,
+                UserName = p.UserName,
+                ImageUrl = p.ImageUrl!,
+            };
+            if (p.Password == p.ConfirmPassword)
+            {
+                var result = await _userManager.CreateAsync(writeUser, p.Password!);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction(nameof(Index), "Login");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                }
+            }
+            return View(p);
         }
 
 
