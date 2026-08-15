@@ -22,10 +22,10 @@ namespace Core_Project.Areas.Writer.Controllers
             ViewBag.o = values.Name + " " + values.Surname;
 
             //Weather APi
-            //string api = "f5d9f7cbcbf4dcb16e066870d5dd5884";
-            //string connection = "https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&lang=tr&units=metric&appid=" + api;
-            //XDocument document = XDocument.Load(connection);
-            //ViewBag.v5 = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
+            string api = "f5d9f7cbcbf4dcb16e066870d5dd5884";
+            string connection = "https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&lang=tr&units=metric&appid=" + api;
+            XDocument document = XDocument.Load(connection);
+            ViewBag.v5 = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
 
             //statistics
             Context c = new Context();
