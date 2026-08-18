@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BusinessLayer.Concrete
 {
-    public class ContactManager:IContactService
+    public class ContactManager : IContactService
     {
         IContactDal _contactDal;
 
@@ -35,6 +35,11 @@ namespace BusinessLayer.Concrete
         public List<Contact> TGetList()
         {
             return _contactDal.GetList();
+        }
+
+        public List<Contact> TGetListByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Contact t)

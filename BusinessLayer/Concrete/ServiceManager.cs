@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BusinessLayer.Concrete
 {
-    public class ServiceManager:IServiceService
+    public class ServiceManager : IServiceService
     {
         IServiceDal _serviceDal;
 
@@ -35,6 +35,11 @@ namespace BusinessLayer.Concrete
         public List<Service> TGetList()
         {
             return _serviceDal.GetList();
+        }
+
+        public List<Service> TGetListByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Service t)

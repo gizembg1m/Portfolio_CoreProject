@@ -36,6 +36,11 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
+        public List<WriterMessage> TGetListByFilter(string p)
+        {
+            return _writerMessageDal.GetByFilter(x=> x.Receiver == p);
+        }
+
         public void TUpdate(WriterMessage t)
         {
             throw new NotImplementedException();

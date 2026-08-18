@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BusinessLayer.Concrete
 {
-    public class FeatureManager : IGenericService<Feature>
+    public class FeatureManager : IFeatureService
     {
 
         IFeatureDal _featureDal;
@@ -35,6 +35,11 @@ namespace BusinessLayer.Concrete
         public List<Feature> TGetList()
         {
             return _featureDal.GetList();
+        }
+
+        public List<Feature> TGetListByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Feature t)

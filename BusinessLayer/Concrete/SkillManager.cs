@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BusinessLayer.Concrete
 {
-    public class SkillManager: ISkillService
+    public class SkillManager : ISkillService
     {
         ISkillDal _skillDal;
 
@@ -35,6 +35,11 @@ namespace BusinessLayer.Concrete
         public List<Skill> TGetList()
         {
             return _skillDal.GetList();
+        }
+
+        public List<Skill> TGetListByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Skill t)

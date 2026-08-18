@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BusinessLayer.Concrete
 {
-    public class PortfolioManager :IPortfolioService
+    public class PortfolioManager : IPortfolioService
     {
         IPortfolioDal _portfolioDal;
 
@@ -34,6 +34,11 @@ namespace BusinessLayer.Concrete
         public List<Portfolio> TGetList()
         {
             return _portfolioDal.GetList();
+        }
+
+        public List<Portfolio> TGetListByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Portfolio t)
