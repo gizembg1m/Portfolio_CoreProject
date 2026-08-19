@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Core_Project.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    
     public class MessageController : Controller
     {
         WriterMessageManager writerMessageManager = new WriterMessageManager(new EfWriterMessageDal());
@@ -19,9 +20,30 @@ namespace Core_Project.Areas.Writer.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+
+       
+       
+        public async Task<IActionResult> ReceiverMessage(string p)
         {
-            return View();
+            WriterUser values = await _userManager.FindByNameAsync(User.Identity.Name);
+            p = values.Email;
+            List<WriterMessage> messageList = writerMessageManager.GetListReceiverMessages(p);
+            return View(messageList);
         }
+
+
+        
+       
+        public async Task<IActionResult> SenderMessage(string p)
+        {
+            WriterUser values = await _userManager.FindByNameAsync(User.Identity.Name);
+            p = values.Email;
+            List<WriterMessage> messageList = writerMessageManager.GetListSenderMessages(p);
+            return View(messageList);
+        }
+
+
+
+
     }
 }
