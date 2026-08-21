@@ -51,7 +51,7 @@ namespace Core_Project.Areas.Writer.Controllers
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
-                return RedirectToAction(nameof(Index), "Default");
+                return RedirectToAction(nameof(Index), "Login");
             }
             return View();
         }

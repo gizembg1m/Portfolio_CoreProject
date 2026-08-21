@@ -8,5 +8,6 @@
         public string? PasswordConfrim { get; set; }
         public string? PictureUrl { get; set; }
         public IFormFile? Picture { get; set; }
+        public object PasswordConfirm { get; internal set; }
     }
 }
