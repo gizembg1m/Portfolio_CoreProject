@@ -13,9 +13,6 @@ namespace Core_Project.Controllers
             [HttpGet]
             public IActionResult Index()
             {
-                ViewBag.v1 = "Edit";
-                ViewBag.v2 = "Featured";
-                ViewBag.v3 = "Featured page";
                 var values = featureManager.TGetByID(1);
                 return View(values);
 

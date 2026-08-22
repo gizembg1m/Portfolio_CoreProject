@@ -13,9 +13,7 @@ namespace Core_Project.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.v1 = "Experience List";
-            ViewBag.v2 = "Experiences";
-            ViewBag.v3 = "Experience List";
+            
             var values = experienceManager.TGetList();
             return View(values);
         }
@@ -24,9 +22,6 @@ namespace Core_Project.Controllers
         [HttpGet]
         public IActionResult AddExperience()
         {
-            ViewBag.v1 = "Add Experience";
-            ViewBag.v2 = "Experiences";
-            ViewBag.v3 = "Add Experience";
             return View();
         }
 
@@ -47,9 +42,6 @@ namespace Core_Project.Controllers
         [HttpGet]
         public IActionResult EditExperience(int id)
         {
-            ViewBag.v1 = "Edit";
-            ViewBag.v2 = "Experiences";
-            ViewBag.v3 = "Update Experience";
             var values = experienceManager.TGetByID(id);
             return View(values);
         }

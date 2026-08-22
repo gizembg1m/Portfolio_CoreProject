@@ -13,9 +13,6 @@ namespace Core_Project.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.v1 = "Skill List";
-            ViewBag.v2 = "Skills";
-            ViewBag.v3 = "Skill List";
             var values = skillManager.TGetList();
             return View(values);
         }
@@ -23,9 +20,6 @@ namespace Core_Project.Controllers
         [HttpGet]
         public IActionResult AddSkill()
         {
-            ViewBag.v1 = "Add Skill";
-            ViewBag.v2 = "Skills";
-            ViewBag.v3 = "Add Skill";
             return View();
         }
 
@@ -46,9 +40,7 @@ namespace Core_Project.Controllers
         [HttpGet]
         public IActionResult EditSkill(int id)
         {
-            ViewBag.v1 = "Edit";
-            ViewBag.v2 = "Skills";
-            ViewBag.v3 = "Edit Skill";
+            
             var values = skillManager.TGetByID(id);
             return View(values);
         }
