@@ -1,14 +1,14 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Entity_Framework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core_Project.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ExperienceController : Controller
     {
-
-
         ExperienceManager experienceManager = new ExperienceManager(new EfExperienceDal());
 
         public IActionResult Index()

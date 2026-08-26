@@ -24,7 +24,7 @@ namespace Core_Project.Areas.Writer.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var values = await _userManager.FindByNameAsync(User.Identity.Name!);
             UserEditViewModel model = new UserEditViewModel();
             model.Name = values.Name;
             model.Surname = values.Surname;
