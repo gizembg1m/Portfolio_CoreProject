@@ -1,0 +1,188 @@
+﻿@using EntityLayer.Concrete
+@model List<Experience>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-6">
+    <div class="p-2">
+        <button type="button" id="btngetlistall" class="btn btn-outline-primary">Get Data</button>
+    </div>
+</div>
+
+<div class="p-2" id="listexperience">
+    @*data will come here*@
+</div>
+
+<br />
+
+<div class="p-2" id="listbyidexperience">
+    @*data will come here*@
+</div>
+
+<br />
+
+<div class="col-md-12">
+    <h5>Add Panel</h5>
+    <input type="text" class="form-control" id="inpname" placeholder="Title" />
+    <br />
+    <input type="text" class="form-control" id="inpdate" placeholder="Date" />
+    <br />
+    @*<input type="text" class="form-control" id="inpusername" placeholder="User Name" />
+        <br />
+        <input type="text" class="form-control" id="inpmail" placeholder="Mail" />
+        <br />*@
+    <button type="button" id="btnadd" class="btn btn-outline-info">Save</button>
+    <br />
+    <br />
+
+</div>
+
+<br />
+
+<div class="col-md-12">
+    <h5>Gey By ID Panel</h5>
+    <input type="text" class="form-control" id="inpid" placeholder="Enter ID" />
+    <br />
+    <button type="button" id="btngetid" class="btn btn-outline-warning">GetByID</button>
+    <br />
+    <br />
+</div>
+
+<br />
+
+<div class="col-md-12">
+    <h5>Delete Panel</h5>
+    <input type="text" class="form-control" id="inpexpid" placeholder="Enter ID" />
+    <br />
+    <button type="button" id="btndelete" class="btn btn-outline-danger">Delete</button>
+    <br />
+    <br />
+</div>
+
+<br />
+
+<div class="col-md-12">
+    <h5>Update Panel</h5>
+    <input type="text" class="form-control" id="inpeditexpid" placeholder="ID" />
+    <br />
+    <input type="text" class="form-control" id="inpeditexpname" placeholder="Name" />
+    <br />
+    <input type="text" class="form-control" id="inpeditexpdate" placeholder="Date" />
+    <br />
+    <button type="button" id="btnupdate" class="btn btn-outline-success">Update</button>
+    <br />
+    <br />
+
+</div>
+
+<br />
+
+
+@section Scripts
+{
+    <script>
+        $("#btngetlistall").click(function() {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "Get",
+                url: "/Experience2/ListExperience/",
+
+                success: function(funk) {
+                    let values = jQuery.parseJSON(funk);
+                    console.log(values);
+
+                    let htmlst = "<table class=table table-bordered> <tr> <th> ID </th> <th> Title </th> <th> Date </th> </tr>";
+                    $.each(values, (index, value) => {
+                        htmlst += `<tr> <td>${value.ExperienceID}</td> <td>${value.Name}</td> <td>${value.Date}</td> </tr>`
+                    });
+                    htmlst += "</table>";
+                    $("#listexperience").html(htmlst);
+                }
+            });
+        });
+
+        $("#btnadd").click(function() {
+            let values = {
+                Name: $("#inpname").val(),
+                Date: $("#inpdate").val()
+            };
+
+            $.ajax({
+                type: "Post",
+                url: "/Experience2/AddExperience",
+                data: values,
+                success: function(func) {
+                    let result = jQuery.parseJSON(func);
+                    alert(result.Name + " Added successfully!")
+                }
+            });
+        });
+
+        $("#btngetid").click(x => {
+            let id = $("#inpid").val();
+
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "GET",
+                url: "/Experience2/GetByID/",
+                data: { ExperienceID: id },
+                success: function(func1) {
+                    let result = jQuery.parseJSON(func1)
+                    console.log(result);
+                    let htmlstr = `<table class=table table-hover> <tr> <th>Experience ID</th> <td>${result.ExperienceID}</td></tr> <tr> <th> Experience Title </th> <td> ${result.Name}</td> </tr> </table>`;
+                    $("#listbyidexperience").html(htmlstr);
+                }
+            })
+            console.log(id);
+        });
+
+        $("#btndelete").click(x => {
+            let id = $("#inpexpid").val();
+            $.ajax({
+                url: "/Experience2/DeleteExperience/" + id,
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                success: function(funk3) {
+                    alert("Experience deleted successfully. Please click 'Get Data' to refresh the list.");
+                    loadData();
+                }
+            });
+        });
+
+
+        $(document).ready(function() {
+            $("#btnupdate").click(function() {
+                let values = {
+                    ExperienceID: $("#inpeditexpid").val(),
+                    Name: $("#inpeditexpname").val(),
+                    Date: $("#inpeditexpdate").val()
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Experience2/UpdateExperince/",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(values),
+                    success: function(response) {
+                        alert("Update succesfully! Please click 'Get Data' to refresh the list.");
+                        // Basarili oldugunda sayfayi yenileme veya verileri tekrar yukleme
+                        loadData();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(`Error: ${status}, ${error}`);
+                        console.error(`Response: ${xhr.responseText}`);
+                        alert("An error occurred during the update process.");
+                    }
+                });
+            });
+        });
+    </script>
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>

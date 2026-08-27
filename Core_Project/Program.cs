@@ -20,7 +20,7 @@ builder.Services.AddControllersWithViews(config =>
     config.Filters.Add(new AuthorizeFilter(policy));
 });
 
-// Cookie ve AccessDenied / Login Path Ayarları
+// Cookie ve AccessDenied / Login Path 
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
@@ -38,12 +38,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/");
+
+
 app.UseHttpsRedirection();
-app.UseStaticFiles(); // static dosyaların sorunsuz sunulması için eklenmesi önerilir
+app.UseStaticFiles(); 
 
 app.UseRouting();
 
-// Authentication her zaman Authorization'dan önce gelmelidir
+
 app.UseAuthentication();
 app.UseAuthorization();
 
