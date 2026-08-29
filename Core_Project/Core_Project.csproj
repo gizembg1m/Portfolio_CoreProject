@@ -1927,7 +1927,6 @@
   <ItemGroup>
     <Folder Include="Areas\Writer\Data\" />
     <Folder Include="Properties\" />
-    <Folder Include="wwwroot\userimage\" />
     <Folder Include="wwwroot\skydash\.git\objects\info\" />
     <Folder Include="wwwroot\skydash\.git\objects\pack\" />
     <Folder Include="wwwroot\skydash\.git\refs\tags\" />

@@ -1,12 +1,10 @@
 ﻿@using EntityLayer.Concrete
 @model List<Portfolio>
-
-
 <div class="row ">
     <div class="col-12 grid-margin">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Project List</h4>
+                <h4 class="card-title">Order Status</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -33,9 +31,9 @@
                                     <td>%@item.Value</td>
                                     @*<td>@item.Status</td>*@
                                     <td>
-                                        
-                                            <div class="badge badge-outline-success">Approved</div>
-                                        
+                                        <a href="/Portfolio/EditPortfolio/@item.PortfolioID">
+                                            <div class="badge badge-outline-success">See Details</div>
+                                        </a>
                                     </td>
                                 </tr>
                             }

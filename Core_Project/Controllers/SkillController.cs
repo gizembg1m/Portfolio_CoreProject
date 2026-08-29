@@ -26,6 +26,21 @@ namespace Core_Project.Controllers
         [HttpPost]
         public IActionResult AddSkill(Skill skill)
         {
+            if (string.IsNullOrEmpty(skill.Title) || string.IsNullOrEmpty(skill.Value))
+            {
+                if (string.IsNullOrEmpty(skill.Title))
+                {
+                    ModelState.AddModelError("Title", "Please enter a title");
+                }
+
+                if (string.IsNullOrEmpty(skill.Value))
+                {
+                    ModelState.AddModelError("Value", "Please enter a value");
+                }
+
+                // Alanlar boş olduğu için veritabanına gitmeden sayfayı hatalarla geri döndürür
+                return View(skill);
+            }
             skillManager.TAdd(skill);
             return RedirectToAction(("Index"));
         }

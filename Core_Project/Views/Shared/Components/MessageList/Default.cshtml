@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-
+@model List<Message>
 
 <div class="col-md-6 col-xl-4 grid-margin stretch-card">
     <div class="card">
@@ -8,29 +8,25 @@
                 <h4 class="card-title">Messages</h4>
                 <a href="/Contact/Index/"><p class="text-muted mb-1 small">View all</p></a>
             </div>
-             @* @foreach (var item in Model)
+            @foreach (var item in Model)
             {
                 <div class="preview-list">
                     <div class="preview-item border-bottom">
                         <div class="preview-thumbnail">
-                            <img src="@item.User.ImageUrl" alt="image" class="rounded-circle" />
+                            <img src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/images/faces/face3.jpg" alt="image" />
                         </div>
                         <div class="preview-item-content d-flex flex-grow">
                             <div class="flex-grow">
                                 <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                                    <h6 class="preview-subject">@item.User.Name</h6>
-                                    <p class="text-small">@item.Date.ToString("dd.MM.yyyy")</p>
+                                    <h6 class="preview-subject">@item.Name</h6>
+                                    <p class="text-muted text-small">@(((DateTime.Parse(item.Date.ToString())).ToString("dd-MMM-yyyy")))</p>
                                 </div>
-                                <p class="text-muted">
-                                    @((item.Content != null && item.Content.Length > 30)
-                                        ? item.Content.Substring(0, 40)+ "..."
-                                        : item.Content)
-                                </p>
+                                <p class="text-muted">@item.Content.Substring(0, 30)...</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            } *@ 
+            }
         </div>
     </div>
 </div>

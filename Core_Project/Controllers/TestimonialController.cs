@@ -41,13 +41,11 @@ namespace Core_Project.Controllers
         }
 
 
-
         [HttpGet]
         public IActionResult AddTestimonial()
         {
             return View();
         }
-
 
 
         [HttpPost]
