@@ -1,6 +1,6 @@
 # 🚀 PortfolioHub
 
-PortfolioHub is an **admin-panel-based web application** developed with **ASP.NET Core 5.0**, designed to showcase personal portfolio information and manage website content.
+PortfolioHub is an **admin-panel-based web application** developed with **ASP.NET Core 10**, designed to showcase personal portfolio information and manage website content.
 
 The project consists of three main sections: the **Main Panel**, where personal information is presented to visitors; the **Author Panel**, where registered users can perform various operations; and the **Admin Panel**, which provides complete management and control of the application's content and users.
 
