@@ -2,7 +2,7 @@
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration; // IConfiguration için eklendi
+using Microsoft.Extensions.Configuration; 
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -13,9 +13,9 @@ namespace Core_Project.Areas.Writer.Controllers
     public class DashboardController : Controller
     {
         private readonly UserManager<WriterUser> _userManager;
-        private readonly IConfiguration _configuration; // 1. Configuration tanımı
+        private readonly IConfiguration _configuration; 
 
-        // 2. Dependency Injection ile IConfiguration parametre olarak eklendi
+        
         public DashboardController(UserManager<WriterUser> userManager, IConfiguration configuration)
         {
             _userManager = userManager;
@@ -27,13 +27,12 @@ namespace Core_Project.Areas.Writer.Controllers
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             ViewBag.o = values.Name + " " + values.Surname;
 
-            // Weather API - secrets.json içerisinden "apikey" değerini okur
+            
             string api = _configuration["ApiKey"];
             string connection = "https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&lang=tr&units=metric&appid=" + api;
             XDocument document = XDocument.Load(connection);
             ViewBag.v5 = document.Descendants("temperature").ElementAt(0).Attribute("value").Value;
 
-            // Statistics
             using (Context c = new Context())
             {
                 ViewBag.v1 = c.WriterMessages.Where(x => x.Receiver == values.Email).Count();
