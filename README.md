@@ -81,3 +81,12 @@ This architecture separates the responsibilities of the application into differe
 ⭐ This project was developed to gain practical experience with **ASP.NET Core, layered architecture, database management, authentication, and web application development**.
 
 <img width="1651" height="753" alt="image" src="https://github.com/user-attachments/assets/e8b2adde-b0b8-4c4a-a7ce-d967b2504b94" />
+
+<img width="1628" height="833" alt="image" src="https://github.com/user-attachments/assets/21a33ec7-88a3-4ba6-b4ab-94acfc538405" />
+
+<img width="1877" height="867" alt="image" src="https://github.com/user-attachments/assets/5bbc185e-4562-422a-8c3b-87421f9a1e03" />
+
+<img width="1867" height="897" alt="image" src="https://github.com/user-attachments/assets/d4c2cac9-e3e2-45c1-bcf3-57f634f1cd3c" />
+
+
+
