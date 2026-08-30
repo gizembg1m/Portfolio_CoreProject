@@ -30,3 +30,12 @@ body {
   text-align: start;
 }
 
+/* Kaoani Cat - https://www.cursors-4u.com/cursor/kaoani-cat */
+html, body, * {
+    cursor: url('/userimage/cursoricon.png'), auto !important;
+}
+
+a, button, input, select {
+    cursor: url('/userimage/cursoricon.png'), pointer !important;
+}
+/* End www.Cursors-4U.com Code */
